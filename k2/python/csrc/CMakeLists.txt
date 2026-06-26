@@ -47,6 +47,7 @@ set_target_properties(_k2 PROPERTIES CUDA_SEPARABLE_COMPILATION ON)
 
 if(NOT WIN32)
   target_link_libraries(_k2 PRIVATE "-Wl,-rpath,${k2_rpath_origin}/k2/${CMAKE_INSTALL_LIBDIR}")
+  # From PyTorch _C.cpython-310-x86_64-linux-gnu.so
 endif()
 
 if(UNIX AND NOT APPLE)

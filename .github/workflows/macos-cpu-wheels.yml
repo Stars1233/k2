@@ -38,7 +38,7 @@ jobs:
   build_wheels_macos_cpu:
     needs: generate_build_matrix
     name: ${{ matrix.torch }} ${{ matrix.python-version }}
-    runs-on: macos-14
+    runs-on: macos-latest
     strategy:
       fail-fast: false
       matrix:
@@ -111,8 +111,9 @@ jobs:
             cd huggingface
             git pull
 
-            mkdir -p macos
-            cp -v ../wheelhouse/*.whl ./macos
+            d=macos/1.24.4.dev20260625/
+            mkdir -p $d
+            cp -v ../wheelhouse/*.whl $d
             git status
             git lfs track "*.whl"
             git add .
